@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cadastro </title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
+              <h4>Cadastro de Usuario</h4>
+            </v-flex>
+        </v-layout>        
+        <v-layout row>
+            <v-flex xs12>
+              <form @submit.prevent="addUser">
+                <v-layout row>
+                  <v-flex xs12 sm6 offset-sm3>
+                    <v-text-field type="text"  placeholder="Nome" v-model="name" required>
+                  </v-flex>
+                  <v-flex xs12 sm6 offset-sm3>
+                    <v-text-field type="text"  placeholder="Idade" v-model="age" required>
+                  </v-flex>
+                  <v-flex xs12 sm6 offset-sm3>
+                    <v-text-field type="date" placeholder="Data nascimento" v-model="date" required>
+                  </v-flex>
+                </v-layout>
+                <v-flex xs12 sm6 offset-sm3>
+                    <v-btn type="submit"> ADICIONAR </v-btn>
+                </v-flex>
+            </form>
+
+            <v-list>
+                <div class="my-2">
+                    <div class="my-2" v-for="(user,i) in users" :key="i">
+                        Nome: {{user.name}} - Idade: {{user.age}} - Data de Nascimento: {{user.date}}
+                        <v-btn @click="deleteUser(i)" color="error" dark> X </v-btn>
+                    </div>
+                </div>
+            </v-list>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="app.js"></script>    
+</body>
+</html>
